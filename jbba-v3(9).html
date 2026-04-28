@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JBBA — Conseil & Contentieux · Droit des Affaires · Droit Pénal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ── Palette principale ── */
+  --navy:      #0C2340;
+  --navy2:     #152D50;
+  --navy3:     #1C3860;
+  --gold:      #B8912A;
+  --gold2:     #D4A83C;
+  --gold-light:#F0D080;
+  --white:     #FFFFFF;
+  --off:       #F7F6F3;
+  --off2:      #EEECE6;
+  --text:      #0C2340;
+  --muted:     #5A6B7E;
+  --muted2:    #8998A8;
+  --line:      rgba(12,35,64,0.1);
+  --line2:     rgba(12,35,64,0.06);
+  --gold-line: rgba(184,145,42,0.25);
+  --serif:     'Cormorant Garant', Georgia, serif;
+  --sans:      'DM Sans', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav#nav {
+  position: fixed; left: 0; right: 0; top: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; height: 74px;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(12,35,64,0.12);
+  transition: height .3s, box-shadow .3s;
+}
+nav#nav.scrolled { height: 62px; box-shadow: 0 2px 20px rgba(12,35,64,0.1); }
+
+.nav-logo {
+  font-family: 'Cormorant Garant', Georgia, serif;
+  font-size: 27px; font-weight: 600; letter-spacing: .07em;
+  color: #0C2340 !important; text-decoration: none;
+}
+.nav-logo span { color: #B8912A !important; }
+
+.nav-links { display: flex; gap: 2.6rem; list-style: none; }
+.nav-links a {
+  font-size: 11px; font-weight: 500; letter-spacing: .17em; text-transform: uppercase;
+  color: #5A6B7E !important; text-decoration: none; transition: color .2s;
+  position: relative;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-4px; left:0; right:0;
+  height:1.5px; background:#B8912A; transform:scaleX(0);
+  transform-origin:left; transition:transform .3s;
+}
+.nav-links a:hover { color: #0C2340 !important; }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.nav-cta {
+  font-size: 11px; font-weight: 500; letter-spacing: .15em; text-transform: uppercase;
+  color: #ffffff !important; background: #0C2340;
+  padding: 11px 26px; text-decoration: none; transition: all .3s;
+  border: 1.5px solid #0C2340;
+}
+.nav-cta:hover { background: #B8912A; border-color: #B8912A; }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; padding: 6px; cursor: pointer; z-index: 210;
+}
+.hamburger span {
+  display: block; width: 24px; height: 1.5px; background: var(--navy); transition: all .3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed; top: 74px; left: 0; right: 0; bottom: 0;
+  z-index: 195; background: var(--white);
+  flex-direction: column; padding: 2rem 5vw;
+  border-top: 1px solid var(--line); overflow-y: auto;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: 13px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--navy); text-decoration: none;
+  padding: 1.1rem 0; border-bottom: 1px solid var(--line); transition: color .2s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-menu .mobile-cta {
+  margin-top: 1.5rem; background: var(--navy); color: var(--white) !important;
+  text-align: center; padding: 1rem; border: none;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; position: relative;
+  display: grid; grid-template-columns: 1fr 1fr;
+  background: var(--navy);
+  overflow: hidden;
+}
+
+/* texture subtile */
+.hero::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background-image:
+    radial-gradient(ellipse 70% 60% at 30% 60%, rgba(184,145,42,0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 80% at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 60%);
+}
+
+.hero-left {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 12vh 5vw 8vh; position: relative; z-index: 2;
+}
+
+.hero-right { position: relative; overflow: hidden; }
+.hero-right img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: center top;
+  filter: brightness(.5) contrast(1.1);
+  transition: transform 8s ease;
+}
+.hero-right::after {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(to right, var(--navy) 0%, transparent 45%);
+}
+
+.hero-badge {
+  font-size: 10px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase;
+  color: var(--gold2); border: 1px solid var(--gold-line);
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 8px 18px; margin-bottom: 3.5rem; width: fit-content;
+  opacity: 0; animation: fadeUp .8s .2s forwards;
+}
+.hero-badge::before { content:''; width:20px; height:1px; background:var(--gold); }
+
+.hero-title {
+  font-family: var(--serif); font-size: clamp(54px, 6.5vw, 112px);
+  font-weight: 300; line-height: 1.0; letter-spacing: -.02em;
+  color: var(--white);
+  opacity: 0; animation: fadeUp 1s .4s forwards;
+}
+.hero-title em { font-style: italic; color: var(--gold2); }
+
+.hero-divider {
+  width: 56px; height: 2px; background: var(--gold);
+  margin: 2.8rem 0;
+  opacity: 0; animation: fadeUp .6s .7s forwards;
+}
+
+.hero-desc {
+  max-width: 480px; font-size: 15px; line-height: 1.9;
+  color: rgba(255,255,255,0.6); font-weight: 300;
+  opacity: 0; animation: fadeUp .8s .85s forwards;
+}
+
+.hero-stats {
+  display: flex; gap: 3.5rem; margin-top: 3.5rem;
+  opacity: 0; animation: fadeUp .8s 1.05s forwards;
+}
+.hero-stat-num {
+  font-family: var(--serif); font-size: 42px; font-weight: 300;
+  color: var(--white); line-height: 1;
+}
+.hero-stat-num span { color: var(--gold2); font-size: 20px; }
+.hero-stat-label {
+  font-size: 10px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); margin-top: 5px;
+}
+
+.hero-scroll {
+  position: absolute; bottom: 3.5vh; left: 5vw;
+  display: flex; align-items: center; gap: 14px;
+  font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  opacity: 0; animation: fadeUp .6s 1.3s forwards;
+}
+.hero-scroll-line {
+  width: 44px; height: 1px; background: var(--gold);
+  animation: pulse 2s 1.5s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scaleX(1)} 50%{opacity:.35;transform:scaleX(.5)} }
+
+/* ── SECTIONS ── */
+section { padding: 10vh 5vw; }
+
+.section-label {
+  font-size: 10px; font-weight: 500; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--gold); display: flex; align-items: center; gap: 14px;
+  margin-bottom: 3rem;
+}
+.section-label::before { content:''; width:28px; height:1.5px; background:var(--gold); }
+
+.section-title {
+  font-family: var(--serif); font-size: clamp(36px, 4vw, 64px);
+  font-weight: 300; line-height: 1.1; letter-spacing: -.02em; color: var(--navy);
+}
+.section-title em { font-style: italic; color: var(--gold); }
+
+/* sections alternées blanc / off-white */
+.cabinet   { background: var(--white); }
+.savoir-faire { background: var(--navy); }
+.offre     { background: var(--off); }
+.equipe    { background: var(--white); }
+.actu      { background: var(--off); }
+.medias    { background: var(--navy); }
+.contact   { background: var(--white); }
+
+/* ── CABINET ── */
+.cabinet-split {
+  display: grid; grid-template-columns: 5fr 4fr; gap: 6rem;
+  align-items: center; margin: 5rem 0 5rem;
+}
+.cabinet-photo {
+  position: relative; aspect-ratio: 4/5; overflow: hidden;
+}
+.cabinet-photo img {
+  width:100%; height:100%; object-fit:cover; object-position:center top;
+  transition: transform .6s;
+}
+.cabinet-photo:hover img { transform: scale(1.03); }
+.cabinet-photo::after {
+  content:''; position:absolute; top:14px; left:14px; right:-14px; bottom:-14px;
+  border: 2px solid var(--gold-line); z-index:-1;
+}
+.cabinet-text p { font-size:15px; line-height:1.9; color:var(--muted); margin-bottom:1.4rem; font-weight:300; }
+.cabinet-text p strong { color:var(--navy); font-weight:500; }
+
+.valeurs-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  border-top: 1px solid var(--line);
+}
+.valeur {
+  padding: 2.5rem 2rem; border-right: 1px solid var(--line);
+  position: relative; transition: background .3s;
+}
+.valeur:last-child { border-right: none; }
+.valeur::after {
+  content:''; position:absolute; top:0; left:0; right:0;
+  height:3px; background:var(--gold); transform:scaleX(0);
+  transition:transform .4s; transform-origin:left;
+}
+.valeur:hover { background: var(--off); }
+.valeur:hover::after { transform: scaleX(1); }
+.valeur-num { font-family:var(--serif); font-size:13px; color:var(--gold); margin-bottom:.6rem; }
+.valeur h3 {
+  font-size:11px; font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--navy); margin-bottom:.7rem;
+}
+.valeur p { font-size:13px; color:var(--muted); line-height:1.8; }
+
+/* ── SAVOIR-FAIRE (fond navy) ── */
+.savoir-faire .section-label { color: var(--gold2); }
+.savoir-faire .section-label::before { background: var(--gold2); }
+.savoir-faire .section-title { color: var(--white); }
+.savoir-faire .section-title em { color: var(--gold2); }
+
+.sf-header {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  align-items: end; margin-bottom: 3.5rem;
+}
+.sf-header p { font-size:15px; color:rgba(255,255,255,.55); line-height:1.9; font-weight:300; }
+
+.sf-tabs {
+  display: flex; flex-wrap: wrap; border-bottom: 1px solid rgba(255,255,255,.12);
+  margin-bottom: 4rem; gap: 0;
+}
+.sf-tab {
+  padding: 1rem 2.8rem;
+  font-family:var(--sans); font-size:11px; font-weight:500;
+  letter-spacing:.18em; text-transform:uppercase;
+  color:rgba(255,255,255,.5); cursor:pointer;
+  border:none; border-bottom:2px solid transparent;
+  background:none; transition:all .3s; white-space: nowrap;
+}
+.sf-tab:hover { color:rgba(255,255,255,.85); }
+.sf-tab.active { color:#D4A83C; border-bottom-color:#D4A83C; }
+
+.sf-panel { display: none; }
+.sf-panel.active {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border: 1px solid rgba(255,255,255,.1);
+}
+.sf-card {
+  padding: 3rem; border-right: 1px solid rgba(255,255,255,.1);
+  transition: background .3s;
+}
+.sf-card:last-child { border-right: none; }
+.sf-card:hover { background: rgba(255,255,255,.04); }
+.sf-domain {
+  font-size:10px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold2); margin-bottom:1rem;
+}
+.sf-card h4 {
+  font-family:var(--serif); font-size:24px; font-weight:400;
+  color:var(--white); margin-bottom:1.2rem; line-height:1.3;
+}
+.sf-card p { font-size:13px; color:rgba(255,255,255,.5); line-height:1.9; margin-bottom:1.5rem; font-weight:300; }
+.sf-list { list-style:none; }
+.sf-list li {
+  font-size:13px; color:rgba(255,255,255,.5); padding:7px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  display:flex; gap:10px; align-items:flex-start;
+}
+.sf-list li:last-child { border-bottom:none; }
+.sf-list li::before { content:'—'; color:var(--gold); flex-shrink:0; font-size:11px; margin-top:3px; }
+
+/* ── OFFRE ── */
+.offre-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border: 1px solid var(--line); margin-top: 4rem;
+}
+.offre-card {
+  padding: 3.5rem; border-right: 1px solid var(--line);
+  display: flex; flex-direction: column; position: relative;
+  background: var(--white); transition: background .3s;
+}
+.offre-card:last-child { border-right: none; }
+.offre-card:hover { background: var(--off2); }
+.offre-card.featured { background: var(--navy); }
+.offre-card.featured:hover { background: var(--navy2); }
+.offre-card.featured::before {
+  content:'Recommandé';
+  position:absolute; top:-1px; left:50%; transform:translateX(-50%);
+  font-size:9px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+  background:var(--gold); color:var(--white); padding:5px 18px;
+}
+.offre-badge {
+  font-size:10px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:1.4rem;
+}
+.offre-card.featured .offre-badge { color:var(--gold2); }
+.offre-card h3 {
+  font-family:var(--serif); font-size:32px; font-weight:400;
+  color:var(--navy); margin-bottom:.4rem;
+}
+.offre-card.featured h3 { color:var(--white); }
+.offre-price {
+  font-family:var(--serif); font-size:18px; font-weight:300;
+  color:var(--gold); margin-bottom:2rem; padding-bottom:2rem;
+  border-bottom: 1px solid var(--line);
+}
+.offre-card.featured .offre-price { color:var(--gold2); border-bottom-color:rgba(255,255,255,.12); }
+.offre-desc {
+  font-size:13px; color:var(--muted); line-height:1.9; flex:1; margin-bottom:2rem; font-weight:300;
+}
+.offre-card.featured .offre-desc { color:rgba(255,255,255,.55); }
+.offre-cta {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:11px; font-weight:500; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--navy); text-decoration:none;
+  border:none; background:none; padding:0; font-family:var(--sans);
+  cursor:pointer; transition:color .2s;
+}
+.offre-cta::after { content:'→'; transition:transform .3s; }
+.offre-cta:hover::after { transform:translateX(4px); }
+.offre-cta:hover { color:var(--gold); }
+.offre-card.featured .offre-cta { color:var(--gold2); }
+
+/* ── ÉQUIPE ── */
+.equipe-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border: 1px solid var(--line); margin-top: 4rem;
+}
+.avocat {
+  border-right: 1px solid var(--line); overflow:hidden;
+  display:flex; flex-direction:column; transition:background .3s;
+}
+.avocat:last-child { border-right:none; }
+.avocat:hover { background:var(--off); }
+.avocat-photo { aspect-ratio:3/3.5; overflow:hidden; position:relative; }
+.avocat-photo img {
+  width:100%; height:100%; object-fit:cover; object-position:center top;
+  filter:saturate(.9); transition:transform .6s, filter .5s;
+}
+.avocat:hover .avocat-photo img { transform:scale(1.04); filter:saturate(1); }
+.avocat-photo-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(12,35,64,.55) 0%, transparent 50%);
+}
+.avocat-body { padding:2.5rem; flex:1; display:flex; flex-direction:column; }
+.avocat-role {
+  font-size:10px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:.4rem;
+}
+.avocat-name {
+  font-family:var(--serif); font-size:28px; font-weight:400; line-height:1.15;
+  color:var(--navy); margin-bottom:.4rem;
+}
+.avocat-bar {
+  font-size:12px; color:var(--muted2); font-style:italic;
+  margin-bottom:1.5rem; padding-bottom:1.5rem;
+  border-bottom:1px solid var(--line);
+}
+.avocat-bio { font-size:13px; color:var(--muted); line-height:1.85; font-weight:300; margin-bottom:1.5rem; flex:1; }
+.tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:1.5rem; }
+.tag {
+  font-size:10px; font-weight:500; letter-spacing:.08em; text-transform:uppercase;
+  border:1px solid var(--gold-line); color:var(--gold); padding:5px 12px; background:transparent;
+}
+.avocat-formation { border-top:1px solid var(--line); padding-top:1.2rem; }
+.avocat-formation-label {
+  font-size:10px; font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--muted2); margin-bottom:.7rem;
+}
+.avocat-formation ul { list-style:none; }
+.avocat-formation li {
+  font-size:12px; color:var(--muted); padding:4px 0;
+  border-bottom:1px solid var(--line2); display:flex; gap:8px; font-weight:300;
+}
+.avocat-formation li:last-child { border-bottom:none; }
+.avocat-formation li::before { content:'—'; color:var(--gold); flex-shrink:0; }
+
+/* ── ACTUALITÉS ── */
+.actu-header {
+  display:flex; align-items:flex-end; justify-content:space-between;
+  margin-bottom: 4rem;
+}
+.actu-link {
+  font-size:11px; font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--gold); text-decoration:none; transition:opacity .2s;
+  display:flex; align-items:center; gap:8px;
+}
+.actu-link:hover { opacity:.65; }
+.actu-link::after { content:'→'; }
+
+.actu-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  border: 1px solid var(--line);
+}
+.actu-card {
+  border-right:1px solid var(--line); overflow:hidden; display:flex; flex-direction:column;
+  text-decoration:none; color:inherit; background:var(--white); transition:background .3s;
+}
+.actu-card:last-child { border-right:none; }
+.actu-card:hover { background:var(--off2); }
+.actu-img { overflow:hidden; aspect-ratio:16/9; }
+.actu-img.tall { aspect-ratio:4/3; }
+.actu-img img { width:100%; height:100%; object-fit:cover; transition:transform .6s; }
+.actu-card:hover .actu-img img { transform:scale(1.05); }
+.actu-body { padding:2rem; flex:1; display:flex; flex-direction:column; }
+.actu-meta {
+  font-size:10px; font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:1rem; display:flex; gap:8px; align-items:center;
+}
+.actu-meta span { color:var(--muted2); }
+.actu-card h3 { font-family:var(--serif); font-weight:400; line-height:1.3; color:var(--navy); flex:1; }
+.actu-card.main h3 { font-size:26px; margin-bottom:1rem; }
+.actu-card.sub h3 { font-size:19px; }
+.actu-read {
+  font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--gold); display:flex; align-items:center; gap:8px; margin-top:1.5rem;
+}
+.actu-read::after { content:'→'; transition:transform .3s; }
+.actu-card:hover .actu-read::after { transform:translateX(4px); }
+
+.actu-list {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  border-left:1px solid var(--line); border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+}
+.actu-list-item {
+  padding:2rem; border-right:1px solid var(--line);
+  text-decoration:none; color:inherit; display:flex; flex-direction:column;
+  gap:.8rem; background:var(--white); transition:background .3s;
+}
+.actu-list-item:last-child { border-right:none; }
+.actu-list-item:hover { background:var(--off2); }
+.actu-list-img { aspect-ratio:16/9; overflow:hidden; }
+.actu-list-img img { width:100%; height:100%; object-fit:cover; transition:transform .5s; }
+.actu-list-item:hover .actu-list-img img { transform:scale(1.06); }
+.actu-list-item h4 {
+  font-family:var(--serif); font-size:17px; font-weight:400;
+  color:var(--navy); line-height:1.35;
+}
+
+/* ── MÉDIAS (fond navy) ── */
+.medias .section-label { color:var(--gold2); }
+.medias .section-label::before { background:var(--gold2); }
+.medias .section-title { color:var(--white); }
+.medias .section-title em { color:var(--gold2); }
+
+.medias-grid {
+  display: grid; grid-template-columns: repeat(5,1fr);
+  border:1px solid rgba(255,255,255,.12); margin-top:4rem;
+}
+.media-card {
+  border-right:1px solid rgba(255,255,255,.12); overflow:hidden;
+  text-decoration:none; color:inherit; display:flex; flex-direction:column;
+  transition:background .3s; cursor:pointer;
+}
+.media-card:last-child { border-right:none; }
+.media-card:hover { background:rgba(255,255,255,.05); }
+.media-thumb { aspect-ratio:16/9; overflow:hidden; position:relative; }
+.media-thumb img { width:100%; height:100%; object-fit:cover; transition:transform .6s; filter:brightness(.8); }
+.media-card:hover .media-thumb img { transform:scale(1.06); filter:brightness(1); }
+.media-play { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+.media-play-btn {
+  width:38px; height:38px; border:1.5px solid rgba(184,145,42,.6);
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(12,35,64,.5); transition:all .3s;
+}
+.media-play-btn svg { width:12px; height:12px; fill:var(--gold2); margin-left:2px; }
+.media-card:hover .media-play-btn { background:var(--gold); border-color:var(--gold); }
+.media-card:hover .media-play-btn svg { fill:var(--white); }
+.media-body { padding:1.2rem; }
+.media-source {
+  font-size:9px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold2); margin-bottom:.4rem;
+}
+.media-body h4 {
+  font-size:12px; color:rgba(255,255,255,.5); line-height:1.5; font-weight:300;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+.medias-row2 {
+  display:grid; grid-template-columns:repeat(5,1fr);
+  border-left:1px solid rgba(255,255,255,.12);
+  border-right:1px solid rgba(255,255,255,.12);
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+/* ── CONTACT ── */
+.contact-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap:6rem;
+  margin-top: 4rem; align-items:start;
+}
+.contact-map-placeholder {
+  aspect-ratio:16/9; overflow:hidden; position:relative;
+  border:1px solid var(--line); margin-bottom:2rem;
+}
+.contact-map-placeholder img {
+  width:100%; height:100%; object-fit:cover; filter:saturate(.4) brightness(.6);
+}
+.contact-map-label {
+  position:absolute; inset:0; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center;
+}
+.contact-map-label strong {
+  display:block; font-size:10px; font-weight:500; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gold2); margin-bottom:.6rem; font-family:var(--sans);
+}
+.contact-map-label span {
+  font-family:var(--serif); font-size:20px; font-weight:300; color:var(--white);
+}
+.contact-details { border:1px solid var(--line); }
+.contact-row {
+  display:flex; align-items:center; gap:2rem;
+  padding:1.1rem 1.8rem; border-bottom:1px solid var(--line);
+}
+.contact-row:last-child { border-bottom:none; }
+.contact-label {
+  font-size:10px; font-weight:500; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--gold); min-width:80px; flex-shrink:0;
+}
+.contact-val { font-size:14px; color:var(--muted); }
+.contact-val a { color:var(--navy); text-decoration:none; transition:color .2s; }
+.contact-val a:hover { color:var(--gold); }
+
+.form-group { margin-bottom:1.7rem; }
+.form-group label {
+  display:block; font-size:10px; font-weight:500;
+  letter-spacing:.18em; text-transform:uppercase;
+  color:var(--navy); margin-bottom:.7rem;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width:100%; background:var(--off);
+  border:1px solid var(--line); border-bottom:1.5px solid var(--line);
+  color:var(--text); padding:13px 18px;
+  font-family:var(--sans); font-size:14px; font-weight:300;
+  outline:none; transition:border-color .3s; appearance:none;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { border-color:var(--gold); background:var(--white); }
+.form-group textarea { height:120px; resize:vertical; }
+.form-group select {
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23B8912A' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 16px center;
+  background-color:var(--off);
+}
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; }
+.form-btn {
+  display:inline-flex; align-items:center; gap:12px;
+  background:var(--navy); color:var(--white);
+  font-family:var(--sans); font-size:11px; font-weight:500;
+  letter-spacing:.17em; text-transform:uppercase;
+  border:2px solid var(--navy); padding:15px 34px; cursor:pointer; transition:all .3s;
+}
+.form-btn:hover { background:var(--gold); border-color:var(--gold); }
+.form-btn svg { width:14px; height:14px; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy); color:var(--white);
+  padding: 3rem 5vw 3.5rem;
+}
+.footer-top {
+  display:flex; align-items:center; justify-content:space-between;
+  padding-bottom:2rem; border-bottom:1px solid rgba(255,255,255,.1); margin-bottom:2rem;
+}
+.footer-logo { font-family:var(--serif); font-size:24px; font-weight:600; color:var(--white); letter-spacing:.07em; }
+.footer-logo span { color:var(--gold2); }
+.footer-nav { display:flex; gap:2.4rem; }
+.footer-nav a {
+  font-size:11px; font-weight:500; letter-spacing:.15em; text-transform:uppercase;
+  color:rgba(255,255,255,.4); text-decoration:none; transition:color .2s;
+}
+.footer-nav a:hover { color:var(--gold2); }
+.footer-bottom {
+  display:flex; align-items:center; justify-content:space-between;
+  font-size:12px; color:rgba(255,255,255,.3);
+}
+.footer-legal { display:flex; gap:2rem; }
+.footer-legal a { color:rgba(255,255,255,.3); text-decoration:none; transition:color .2s; }
+.footer-legal a:hover { color:var(--gold2); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none} }
+.reveal { opacity:1; transform:none; transition:opacity .9s ease, transform .9s ease; }
+.reveal.animate { opacity:0; transform:translateY(26px); }
+.reveal.animate.visible { opacity:1; transform:none; }
+.d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s}
+.d4{transition-delay:.4s} .d5{transition-delay:.5s}
+
+/* ── MOBILE ── */
+@media(max-width:1024px) {
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{padding:18vh 5vw 10vh}
+  .valeurs-grid{grid-template-columns:repeat(2,1fr)}
+  .valeur:nth-child(1),.valeur:nth-child(2){border-bottom:1px solid var(--line)}
+  .valeur:nth-child(2){border-right:none}
+}
+@media(max-width:700px) {
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .cabinet-split{grid-template-columns:1fr;gap:3rem}
+  .sf-header{grid-template-columns:1fr}
+  .sf-panel.active,.offre-grid,.equipe-grid,.medias-grid,.medias-row2{grid-template-columns:1fr}
+  .actu-grid{grid-template-columns:1fr}
+  .actu-list{grid-template-columns:repeat(2,1fr)}
+  .contact-inner{grid-template-columns:1fr;gap:3rem}
+  .footer-top,.footer-bottom{flex-direction:column;gap:1.5rem;text-align:center}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#accueil" class="nav-logo">JB<span>BA</span></a>
+  <ul class="nav-links">
+    <li><a href="#cabinet">Cabinet</a></li>
+    <li><a href="#savoir-faire">Savoir-faire</a></li>
+    <li><a href="#offre">Offre</a></li>
+    <li><a href="#equipe">Équipe</a></li>
+    <li><a href="#actu">Actualités</a></li>
+    <li><a href="#medias">Médias</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Nous contacter</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#cabinet" class="mobile-link">Cabinet</a>
+  <a href="#savoir-faire" class="mobile-link">Savoir-faire</a>
+  <a href="#offre" class="mobile-link">Offre</a>
+  <a href="#equipe" class="mobile-link">Équipe</a>
+  <a href="#actu" class="mobile-link">Actualités</a>
+  <a href="#medias" class="mobile-link">Médias</a>
+  <a href="#contact" class="mobile-link mobile-cta">Nous contacter</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="accueil">
+  <div class="hero-left">
+    <div class="hero-badge">A.A.R.P.I. · Toque C1393 · Paris 17ème</div>
+    <h1 class="hero-title">
+      Droit des<br>affaires.<br>
+      Droit <em>pénal.</em>
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-desc">Un cabinet à taille humaine fondé par deux entrepreneurs-avocats. Conseil et contentieux pour les entrepreneurs, sociétés et particuliers — en France et à l'international.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">12<span>ans</span></div>
+        <div class="hero-stat-label">D'association</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-label">Avocats</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">Paris</div>
+        <div class="hero-stat-label">17ème arrondissement</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/543fd8ad-2517-4b2c-9ae0-f62a56b763fd/image00119.jpg" alt="Cabinet JBBA" id="hero-img">
+  </div>
+  <div class="hero-scroll"><div class="hero-scroll-line"></div>Défiler</div>
+</section>
+
+<!-- CABINET -->
+<section class="cabinet" id="cabinet">
+  <div class="section-label">Notre cabinet</div>
+  <div class="cabinet-split">
+    <div class="cabinet-photo reveal">
+      <img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/543fd8ad-2517-4b2c-9ae0-f62a56b763fd/image00119.jpg" alt="Théodore Jean-Baptiste & Seydi Ba">
+    </div>
+    <div class="cabinet-text reveal d2">
+      <h2 class="section-title">Un tandem<br>depuis <em>12 ans.</em></h2><br>
+      <p>JBBA est un cabinet d'affaires à taille humaine, fondé par <strong>Théodore Jean-Baptiste</strong> et <strong>Seydi Ba</strong> — deux associés qui se connaissent depuis plus d'une décennie.</p>
+      <p>Forts de leur expérience d'entrepreneurs, avec la création de <strong>Nebedaye</strong> (compléments alimentaires 100% naturels) et d'<strong>Ethos</strong> (formation en art oratoire), ils apportent à leurs clients une vision qui dépasse le seul cadre juridique.</p>
+      <p>Le cabinet conseille et accompagne les entrepreneurs, de l'idéation à la création, ainsi que les sociétés dans toutes leurs opérations — et se bat à leurs côtés lors de tout contentieux.</p>
+    </div>
+  </div>
+  <div class="valeurs-grid">
+    <div class="valeur reveal"><div class="valeur-num">01</div><h3>Travail d'équipe</h3><p>Équipe réduite pour un contact direct et permanent. Collaboration étroite pour saisir chaque enjeu.</p></div>
+    <div class="valeur reveal d1"><div class="valeur-num">02</div><h3>Réactivité</h3><p>Nos clients font parfois appel à nous dans l'urgence. Répondre sans délai est notre priorité absolue.</p></div>
+    <div class="valeur reveal d2"><div class="valeur-num">03</div><h3>Rigueur</h3><p>Intervention dans des branches ciblées du droit pour une excellence technique optimale.</p></div>
+    <div class="valeur reveal d3"><div class="valeur-num">04</div><h3>Combativité</h3><p>Dans la négociation comme au contentieux, notre combativité est déterminante. Nous envisageons les litiges pour les gagner.</p></div>
+  </div>
+</section>
+
+<!-- SAVOIR-FAIRE -->
+<section class="savoir-faire" id="savoir-faire">
+  <div class="sf-header">
+    <div>
+      <div class="section-label">Savoir-faire</div>
+      <h2 class="section-title reveal">Un duo d'avocats,<br>pour <em>vous.</em></h2>
+    </div>
+    <p class="reveal d2">Chez JBBA, l'expérience client se veut unique. Vos avocats sont vos partenaires, accessibles en toutes circonstances pour accompagner vos projets et se battre à vos côtés devant toutes les juridictions.</p>
+  </div>
+  <div class="sf-tabs">
+    <button class="sf-tab active" data-tab="conseil">Vous conseille</button>
+    <button class="sf-tab" data-tab="represente">Vous représente</button>
+    <button class="sf-tab" data-tab="forme">Vous forme</button>
+  </div>
+  <div class="sf-panel active" id="panel-conseil">
+    <div class="sf-card"><div class="sf-domain">Droit des sociétés</div><h4>Accompagnement des entreprises</h4><p>De la start-up au grand groupe, nous intervenons sur toutes vos problématiques de gouvernance et de structure.</p><ul class="sf-list"><li>Structure juridique et fiscale à la création</li><li>Rédaction statuts & pactes d'actionnaires</li><li>Levées de fonds pour start-up</li><li>Assemblées générales & audits juridiques</li></ul></div>
+    <div class="sf-card"><div class="sf-domain">Droit des contrats</div><h4>Sécurisation contractuelle</h4><p>Les contrats conditionnent la sécurité juridique des entreprises. Nous intervenons pour réduire les risques.</p><ul class="sf-list"><li>CGV/CGU et contrats de prestation</li><li>Contrats de franchise & distribution</li><li>Industrie musicale (cession de droits)</li><li>Contrats sportifs (clubs, agents)</li></ul></div>
+    <div class="sf-card"><div class="sf-domain">Droit immobilier</div><h4>Gestion & transactions immobilières</h4><p>Protection optimale des droits de nos clients dans tous les aspects juridiques de leurs biens immobiliers.</p><ul class="sf-list"><li>Copropriété & gestion d'immeubles</li><li>Baux commerciaux & résidentiels</li><li>Transactions et acquisitions</li><li>Recouvrement de charges</li></ul></div>
+  </div>
+  <div class="sf-panel" id="panel-represente">
+    <div class="sf-card"><div class="sf-domain">Civil & commercial</div><h4>Contentieux des affaires</h4><p>Stratégie adaptée au contexte pour résoudre tout litige, simple comme complexe, devant toutes les juridictions.</p><ul class="sf-list"><li>Rupture de relations commerciales</li><li>Inexécution contractuelle</li><li>Conflits entre associés</li><li>Concurrence déloyale</li><li>Vices cachés & responsabilité civile</li></ul></div>
+    <div class="sf-card"><div class="sf-domain">Pénal des affaires</div><h4>Défense pénale rigoureuse</h4><p>Mis en cause ou victime, nous vous accompagnons à chaque stade de la procédure avec rigueur et engagement.</p><ul class="sf-list"><li>Évaluation du risque pénal en amont</li><li>De l'enquête jusqu'aux plaidoiries</li><li>Corruption, escroquerie, blanchiment</li><li>Défense des victimes (discriminations…)</li><li>Communication de crise</li></ul></div>
+    <div class="sf-card"><div class="sf-domain">Prévention</div><h4>Négociation précontentieuse</h4><p>Un procès peut être coûteux et chronophage. Agir préventivement est souvent la solution la plus efficace.</p><ul class="sf-list"><li>Étude minutieuse du dossier</li><li>Assistance dans les négociations</li><li>Protocoles d'accord sur mesure</li><li>Préservation des relations commerciales</li></ul></div>
+  </div>
+  <div class="sf-panel" id="panel-forme">
+    <div class="sf-card"><div class="sf-domain">Entrepreneurs & Start-up</div><h4>Formations juridiques</h4><p>Maîtriser les fondamentaux juridiques permet aux entrepreneurs de gagner en autonomie et d'anticiper les risques.</p><ul class="sf-list"><li>Recouvrement de créances</li><li>Responsabilités contractuelles</li><li>Protection de marque et image</li><li>Dépôt de brevet France & international</li><li>Lancement d'e-commerce</li></ul></div>
+    <div class="sf-card"><div class="sf-domain">Sportifs & agents sportifs</div><h4>Droit du sport</h4><p>Le monde du sport se confond avec celui des affaires. Nous formons les acteurs du sport à leurs droits.</p><ul class="sf-list"><li>Contrats de sponsoring sportif</li><li>Relation joueur / agent</li><li>Négociation avec un club</li><li>Protection et gestion de l'image</li></ul></div>
+    <div class="sf-card"><div class="sf-domain">Industrie agroalimentaire</div><h4>Droit de l'agroalimentaire</h4><p>L'agroalimentaire connaît un rééquilibrage profond. Nos formations préparent les acteurs à leurs droits et obligations.</p><ul class="sf-list"><li>Décryptage de la loi EGALIM 2</li><li>Clause de renégociation</li><li>Pratiques publicitaires alimentaires</li><li>Droits et obligations des acteurs</li></ul></div>
+  </div>
+</section>
+
+<!-- OFFRE -->
+<section class="offre" id="offre">
+  <div class="section-label">Nos tarifs</div>
+  <h2 class="section-title reveal">Une offre<br>sur <em>mesure.</em></h2>
+  <div class="offre-grid reveal d1">
+    <div class="offre-card">
+      <div class="offre-badge">Formule récurrente</div>
+      <h3>Abonnement</h3>
+      <div class="offre-price">À partir de 800 € HT / mois</div>
+      <p class="offre-desc">Des demandes variées et récurrentes ? Vous souhaitez avoir de la visibilité sur vos dépenses juridiques annuelles ? L'abonnement vous permet de contacter votre avocat dès que vous en ressentez le besoin, pour tous les conseils généraux sur vos problèmes juridiques quotidiens.</p>
+      <a href="#contact" class="offre-cta">Prendre contact</a>
+    </div>
+    <div class="offre-card featured">
+      <div class="offre-badge">Formule sur mesure</div>
+      <h3>Forfait</h3>
+      <div class="offre-price">Sur devis</div>
+      <p class="offre-desc">Après étude de votre dossier, nous établissons un devis personnalisé conforme au service requis. Tarif fixe déterminé pour nos prestations, de la simple consultation à l'accompagnement jusqu'au terme d'une procédure judiciaire.</p>
+      <a href="#contact" class="offre-cta">Obtenir un devis</a>
+    </div>
+    <div class="offre-card">
+      <div class="offre-badge">Affaires complexes</div>
+      <h3>Taux horaire</h3>
+      <div class="offre-price">350 € HT / heure</div>
+      <p class="offre-desc">Pour les affaires les plus complexes où il est impossible d'évaluer à l'avance les développements prévisibles. Selon la complexité du dossier, l'intérêt en jeu et les moyens consacrés, la facturation au temps passé est privilégiée.</p>
+      <a href="#contact" class="offre-cta">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<!-- ÉQUIPE -->
+<section class="equipe" id="equipe">
+  <div class="section-label">L'équipe</div>
+  <h2 class="section-title reveal">Vos <em>avocats.</em></h2>
+  <div class="equipe-grid">
+    <div class="avocat reveal">
+      <div class="avocat-photo">
+        <img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/20c65b69-3e3b-4d06-91d4-2a5af13225e8/5D1A1191-C2+%282%29.jpg" alt="Théodore Jean-Baptiste">
+        <div class="avocat-photo-overlay"></div>
+      </div>
+      <div class="avocat-body">
+        <div class="avocat-role">Associé fondateur</div>
+        <div class="avocat-name">Théodore<br>Jean-Baptiste</div>
+        <div class="avocat-bar">Avocat au Barreau de Paris · Toque C1393</div>
+        <p class="avocat-bio">Entrepreneur avant d'être avocat, Théodore a fondé sa première start-up à 24 ans dans les compléments alimentaires naturels. Après des expériences à Londres et à Paris, il crée JBBA pour accompagner les porteurs de projets avec une approche innovante, ancrée dans la réalité entrepreneuriale.</p>
+        <div class="tags"><span class="tag">Droit agroalimentaire</span><span class="tag">Droit des sociétés</span><span class="tag">Industrie musicale</span></div>
+        <div class="avocat-formation">
+          <div class="avocat-formation-label">Formation</div>
+          <ul>
+            <li>CAPA · Haute École des Avocats Conseils</li>
+            <li>M2 Law, Entrepreneurship & Digital · Paris-Saclay</li>
+            <li>M2 Droit des affaires · Univ. Catholique de Lille</li>
+            <li>M2 Développement agricole durable · Paris-Saclay</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="avocat reveal d2">
+      <div class="avocat-photo">
+        <img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/3706ac0a-80c4-4eb5-a717-1b6c4408ec68/5D1A1228-C+%282%29.jpg" alt="Seydi Ba">
+        <div class="avocat-photo-overlay"></div>
+      </div>
+      <div class="avocat-body">
+        <div class="avocat-role">Associé fondateur</div>
+        <div class="avocat-name">Seydi<br>Ba</div>
+        <div class="avocat-bar">Avocat au Barreau de Paris · 2ème Secrétaire de la Conférence 2023</div>
+        <p class="avocat-bio">Orienté vers l'international et l'Afrique, Seydi est formé au droit OHADA et au contentieux des affaires. Co-fondateur d'Ethos (art oratoire), élu 2ème Secrétaire de la Conférence en 2023, il intervient notamment en droit pénal pour défendre victimes et personnes mises en cause.</p>
+        <div class="tags"><span class="tag">Droit OHADA</span><span class="tag">Droit pénal</span><span class="tag">Contentieux</span><span class="tag">Droit des sociétés</span></div>
+        <div class="avocat-formation">
+          <div class="avocat-formation-label">Formation</div>
+          <ul>
+            <li>2ème Secrétaire de la Conférence — 2023</li>
+            <li>CAPA · École de Formation du Barreau de Paris</li>
+            <li>M2 Contentieux interne & international · Paris V</li>
+            <li>M2 Droits africains · Paris I Panthéon-Sorbonne</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="avocat reveal d3">
+      <div class="avocat-photo">
+        <img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/0366b6eb-f546-42d5-973d-5d91d615e1bb/gautret-astrid-5d1a6211-2-3000px-1.jpg" alt="Astrid Gautret">
+        <div class="avocat-photo-overlay"></div>
+      </div>
+      <div class="avocat-body">
+        <div class="avocat-role">Collaboratrice</div>
+        <div class="avocat-name">Astrid<br>Gautret</div>
+        <div class="avocat-bar">Avocate au Barreau de Paris</div>
+        <p class="avocat-bio">Dotée d'un parcours pluridisciplinaire, Astrid a acquis une solide expérience en droit pénal au sein de cabinets et d'associations (Paris Aide aux Victimes, La Voix de l'Enfant). Elle a développé une expertise en réparation du préjudice corporel. Son approche humaine est au cœur de sa pratique.</p>
+        <div class="tags"><span class="tag">Droit pénal</span><span class="tag">Responsabilité médicale</span><span class="tag">Préjudice corporel</span></div>
+        <div class="avocat-formation">
+          <div class="avocat-formation-label">Formation</div>
+          <ul>
+            <li>CAPA · Haute École des Avocats Conseils</li>
+            <li>M2 Contentieux interne & international · Paris V</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTUALITÉS -->
+<section class="actu" id="actu">
+  <div class="actu-header">
+    <div>
+      <div class="section-label">Actualités</div>
+      <h2 class="section-title reveal">Nos dernières<br><em>publications.</em></h2>
+    </div>
+    <a href="https://jbba.co/actu" target="_blank" class="actu-link reveal d2">Toutes les actualités</a>
+  </div>
+  <div class="actu-grid reveal">
+    <a href="https://jbba.co/actu/rap" target="_blank" class="actu-card main">
+      <div class="actu-img tall"><img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/1747683329813-BJUYVM835SX0X94M9821/unsplash-image-sdtnZ4LgbWk.jpg" alt=""></div>
+      <div class="actu-body">
+        <div class="actu-meta">Droit d'auteur <span>·</span> 19 mai 2025</div>
+        <h3>Œuvre artistique et disparition de l'auteur : peut-on juridiquement demander le retrait posthume d'une œuvre ?</h3>
+        <div class="actu-read">Lire l'article</div>
+      </div>
+    </a>
+    <a href="https://jbba.co/actu/editolexbase-mtnet" target="_blank" class="actu-card sub">
+      <div class="actu-img"><img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/1737050740573-FZIQZSM82HZZUX77THQH/1725555356014.jpg" alt=""></div>
+      <div class="actu-body">
+        <div class="actu-meta">Lexbase <span>·</span> 16 jan. 2025</div>
+        <h3>Edito de Seydi Ba, avocat associé, dans le journal juridique LEXBASE</h3>
+        <div class="actu-read">Lire l'article</div>
+      </div>
+    </a>
+    <a href="https://jbba.co/actu/crypto" target="_blank" class="actu-card sub">
+      <div class="actu-img"><img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/1737049103145-ERJDM268XRXMHX7MDJGF/unsplash-image-fiXLQXAhCfk.jpg" alt=""></div>
+      <div class="actu-body">
+        <div class="actu-meta">Pénal <span>·</span> 16 jan. 2025</div>
+        <h3>Relaxe confirmée dans l'un des premiers dossiers de cryptomonnaies en France</h3>
+        <div class="actu-read">Lire l'article</div>
+      </div>
+    </a>
+  </div>
+  <div class="actu-list reveal d2">
+    <a href="https://jbba.co/actu/editolexbase" target="_blank" class="actu-list-item">
+      <div class="actu-list-img"><img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/1704457801823-WOD4ECCOH31O933CSB8L/1704358928606.jpeg" alt=""></div>
+      <div class="actu-meta">Lexbase <span>·</span> 2024</div>
+      <h4>Edito de Seydi Ba dans le journal LEXBASE</h4>
+    </a>
+    <a href="https://jbba.co/actu/le-cabinet-en-dfense-dans-une-affaire-dabus-de-confiance-contre-une-ancienne-rsistante" target="_blank" class="actu-list-item">
+      <div class="actu-list-img"><img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/1703628180281-N2GPJ1PLKJAJVN9O27MO/386870764_7547471338614834_2787889030849555078_n.jpg" alt=""></div>
+      <div class="actu-meta">Pénal <span>·</span> 2023</div>
+      <h4>Défense dans une affaire d'abus de confiance contre une ancienne résistante</h4>
+    </a>
+    <a href="https://jbba.co/actu/memorialdecaen" target="_blank" class="actu-list-item">
+      <div class="actu-list-img"><img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/1684168390443-91FBS51UH0C102HQZPAV/1+%282%29.jpg" alt=""></div>
+      <div class="actu-meta">Prix <span>·</span> 2023</div>
+      <h4>Théodore Jean-Baptiste récompensé au Concours de Plaidoirie du Mémorial de Caen</h4>
+    </a>
+    <a href="https://jbba.co/actu/rixeparis" target="_blank" class="actu-list-item">
+      <div class="actu-list-img"><img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/1687532333736-XGN2C5XRHXUFMV7W5MVT/image-asset.jpeg" alt=""></div>
+      <div class="actu-meta">Pénal <span>·</span> 2023</div>
+      <h4>Le cabinet accompagne une personne mise en examen dans une affaire de tentative de meurtre</h4>
+    </a>
+  </div>
+</section>
+
+<!-- MÉDIAS -->
+<section class="medias" id="medias">
+  <div class="section-label">Médias</div>
+  <h2 class="section-title reveal">Présences<br><em>médiatiques.</em></h2>
+  <div class="medias-grid reveal d1">
+    <a href="https://www.youtube.com/watch?v=kAmo8GUIaNw" target="_blank" class="media-card">
+      <div class="media-thumb"><img src="https://i.ytimg.com/vi/kAmo8GUIaNw/hqdefault.jpg" alt=""><div class="media-play"><div class="media-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div></div>
+      <div class="media-body"><div class="media-source">Lex Inside</div><h4>Seydi Ba interviewé dans l'émission Lex Inside</h4></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=Vrfe3kX2lmU" target="_blank" class="media-card">
+      <div class="media-thumb"><img src="https://i.ytimg.com/vi/Vrfe3kX2lmU/hqdefault.jpg" alt=""><div class="media-play"><div class="media-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div></div>
+      <div class="media-body"><div class="media-source">Barreau de Paris</div><h4>Discours de Seydi Ba — 2ème Secrétaire de la Conférence</h4></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=lu0Ejv-2wu8" target="_blank" class="media-card">
+      <div class="media-thumb"><img src="https://i.ytimg.com/vi/lu0Ejv-2wu8/hqdefault.jpg" alt=""><div class="media-play"><div class="media-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div></div>
+      <div class="media-body"><div class="media-source">Mémorial de Caen</div><h4>Plaidoirie de Théodore Jean-Baptiste — 3ème Prix</h4></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=TgA2h3kiEaQ" target="_blank" class="media-card">
+      <div class="media-thumb"><img src="https://i.ytimg.com/vi/TgA2h3kiEaQ/hqdefault.jpg" alt=""><div class="media-play"><div class="media-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div></div>
+      <div class="media-body"><div class="media-source">Mediapart</div><h4>Seydi Ba dans "À l'air libre" — Pornographie : l'industrie de la violence</h4></div>
+    </a>
+    <a href="https://jbba.co/medias/v/bfm-paris-interview-de-seydi-ba" target="_blank" class="media-card">
+      <div class="media-thumb"><img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/3c4d48fb-8ffe-47d9-9425-86a820290e71/IMG_2289.png" alt=""><div class="media-play"><div class="media-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div></div>
+      <div class="media-body"><div class="media-source">BFM Paris</div><h4>Interview de Seydi Ba sur BFM Paris</h4></div>
+    </a>
+  </div>
+  <div class="medias-row2 reveal d2">
+    <a href="https://jbba.co/medias/v/seydi-ba-interview-dans-le-cadre-de-lmission-job-sur-c8" target="_blank" class="media-card">
+      <div class="media-thumb"><img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/46cdb23c-ae98-4081-912f-5d04fb196a4a/IMG_1253.jpeg" alt=""><div class="media-play"><div class="media-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div></div>
+      <div class="media-body"><div class="media-source">C8</div><h4>Seydi Ba dans l'émission JOB sur C8</h4></div>
+    </a>
+    <a href="https://jbba.co/medias/v/arnacoeur" target="_blank" class="media-card">
+      <div class="media-thumb"><img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/6837cf64-9b34-4065-819a-1cbc4a021156/Capture+d%27%C3%A9cran+2023-12-27+180459.png" alt=""><div class="media-play"><div class="media-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div></div>
+      <div class="media-body"><div class="media-source">M6</div><h4>Le cabinet en défense de "l'arnacœur" sur M6</h4></div>
+    </a>
+    <a href="https://jbba.co/medias/v/resistante" target="_blank" class="media-card">
+      <div class="media-thumb"><img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/dd266992-2c31-401d-9012-55bcd0d67ac0/Capture+d%27%C3%A9cran+2023-12-27+180229.png" alt=""><div class="media-play"><div class="media-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div></div>
+      <div class="media-body"><div class="media-source">France 2</div><h4>Le cabinet en défense d'une auxiliaire de vie contre une ancienne résistante</h4></div>
+    </a>
+    <a href="https://jbba.co/medias/v/bfmtv-seydi-ba-entendu-sur-la-dtention-provisoire" target="_blank" class="media-card">
+      <div class="media-thumb" style="background:var(--navy2);display:flex;align-items:center;justify-content:center;"><div class="media-play"><div class="media-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div></div>
+      <div class="media-body"><div class="media-source">BFM TV</div><h4>Seydi Ba entendu sur la détention provisoire</h4></div>
+    </a>
+    <a href="https://jbba.co/medias/v/bfm-tv-seydi-ba-entendu-sur-le-nouveau-ministre-de-lintrieur" target="_blank" class="media-card" style="border-right:none">
+      <div class="media-thumb" style="background:var(--navy2);display:flex;align-items:center;justify-content:center;"><div class="media-play"><div class="media-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div></div>
+      <div class="media-body"><div class="media-source">BFM TV</div><h4>Seydi Ba entendu sur le nouveau ministre de l'Intérieur</h4></div>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title reveal">Parlons de<br>votre <em>projet.</em></h2>
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="contact-map-placeholder">
+        <img src="https://images.squarespace-cdn.com/content/v1/619cfe2f8aa3b84b5227152c/2fda0e23-7ad6-444a-945f-bf61c9a9c09b/unsplash-image-K6pr5ClxWiE.jpg" alt="Paris 17">
+        <div class="contact-map-label">
+          <strong>Notre cabinet</strong>
+          <span>1 bis, boulevard Berthier<br>75017 Paris</span>
+        </div>
+      </div>
+      <div class="contact-details">
+        <div class="contact-row"><span class="contact-label">Adresse</span><span class="contact-val">1 bis, boulevard Berthier — 75017 Paris</span></div>
+        <div class="contact-row"><span class="contact-label">Téléphone</span><span class="contact-val"><a href="tel:+33953496699">+33 9 53 49 66 99</a></span></div>
+        <div class="contact-row"><span class="contact-label">Fax</span><span class="contact-val">+33 9 57 36 92 08</span></div>
+        <div class="contact-row"><span class="contact-label">Email</span><span class="contact-val"><a href="mailto:contact@jbba.co">contact@jbba.co</a></span></div>
+        <div class="contact-row"><span class="contact-label">Statut</span><span class="contact-val">A.A.R.P.I. · Toque C1393</span></div>
+      </div>
+    </div>
+    <div class="reveal d2">
+      <div class="form-row">
+        <div class="form-group"><label>Prénom</label><input type="text" placeholder="Votre prénom"></div>
+        <div class="form-group"><label>Nom</label><input type="text" placeholder="Votre nom"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Email</label><input type="email" placeholder="votre@email.com"></div>
+        <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="+33 6 00 00 00 00"></div>
+      </div>
+      <div class="form-group">
+        <label>Domaine juridique</label>
+        <select>
+          <option value="">— Choisissez un domaine —</option>
+          <optgroup label="Conseil"><option>Droit des sociétés</option><option>Droit des contrats</option><option>Droit immobilier</option></optgroup>
+          <optgroup label="Contentieux"><option>Contentieux civil & commercial</option><option>Droit pénal</option><option>Négociation précontentieuse</option></optgroup>
+          <optgroup label="Formations"><option>Formation entrepreneurs</option><option>Formation sportifs</option><option>Formation agroalimentaire</option></optgroup>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Message</label><textarea placeholder="Décrivez brièvement votre situation ou votre projet…"></textarea></div>
+      <button class="form-btn">Envoyer ma demande <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">JB<span>BA</span></div>
+    <nav class="footer-nav">
+      <a href="#cabinet">Cabinet</a>
+      <a href="#savoir-faire">Savoir-faire</a>
+      <a href="#offre">Offre</a>
+      <a href="#equipe">Équipe</a>
+      <a href="#actu">Actualités</a>
+      <a href="#medias">Médias</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <div>© JBBA 2025 · A.A.R.P.I. · Toque C1393 · 1 bis, boulevard Berthier — 75017 Paris</div>
+    <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Données personnelles</a></div>
+  </div>
+</footer>
+
+<script>
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+document.querySelectorAll('.mobile-link').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => {
+  el.classList.add('animate');
+  obs.observe(el);
+});
+
+document.querySelectorAll('.sf-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.sf-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.sf-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+const heroImg = document.getElementById('hero-img');
+window.addEventListener('scroll', () => {
+  if(heroImg) heroImg.style.transform = `translateY(${window.scrollY * .12}px)`;
+});
+</script>
+</body>
+</html>
